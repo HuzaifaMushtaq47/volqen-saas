@@ -1,0 +1,135 @@
+{
+  "_note": "Plan definitions shared with the Volqen website (config/plans.json). Keep both copies in step.",
+  "plans": [
+    {
+      "id": "starter",
+      "name": "Starter",
+      "tagline": "For small businesses moving off spreadsheets and basic accounting software.",
+      "maxUsers": 5,
+      "maxCompanies": 1,
+      "storageGb": 5,
+      "erpModules": [
+        "Accounts",
+        "Selling",
+        "Buying",
+        "Stock",
+        "CRM",
+        "Setup",
+        "Utilities"
+      ],
+      "apps": [
+        "erpnext"
+      ],
+      "roles": [
+        "Accounts Manager",
+        "Accounts User",
+        "Sales Manager",
+        "Sales User",
+        "Purchase Manager",
+        "Purchase User",
+        "Stock Manager",
+        "Stock User",
+        "Report Manager"
+      ]
+    },
+    {
+      "id": "growth",
+      "name": "Growth",
+      "tagline": "For growing companies with production, projects, teams and approvals.",
+      "maxUsers": 25,
+      "maxCompanies": 3,
+      "storageGb": 25,
+      "erpModules": [
+        "Accounts",
+        "Selling",
+        "Buying",
+        "Stock",
+        "CRM",
+        "Setup",
+        "Utilities",
+        "Manufacturing",
+        "Quality Management",
+        "Projects",
+        "Assets",
+        "Subcontracting",
+        "HR",
+        "Payroll"
+      ],
+      "apps": [
+        "erpnext",
+        "hrms"
+      ],
+      "roles": [
+        "Accounts Manager",
+        "Accounts User",
+        "Sales Manager",
+        "Sales User",
+        "Purchase Manager",
+        "Purchase User",
+        "Stock Manager",
+        "Stock User",
+        "Report Manager",
+        "Manufacturing Manager",
+        "Manufacturing User",
+        "Quality Manager",
+        "Projects Manager",
+        "Projects User",
+        "HR Manager",
+        "HR User"
+      ]
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "tagline": "For multi-company groups that need every module, API access and priority support.",
+      "maxUsers": 100,
+      "maxCompanies": 10,
+      "storageGb": 100,
+      "erpModules": [
+        "Accounts",
+        "Selling",
+        "Buying",
+        "Stock",
+        "CRM",
+        "Setup",
+        "Utilities",
+        "Manufacturing",
+        "Quality Management",
+        "Projects",
+        "Assets",
+        "Subcontracting",
+        "HR",
+        "Payroll",
+        "Support",
+        "Maintenance",
+        "Website",
+        "Portal"
+      ],
+      "apps": [
+        "erpnext",
+        "hrms"
+      ],
+      "roles": [
+        "Accounts Manager",
+        "Accounts User",
+        "Sales Manager",
+        "Sales User",
+        "Purchase Manager",
+        "Purchase User",
+        "Stock Manager",
+        "Stock User",
+        "Report Manager",
+        "Manufacturing Manager",
+        "Manufacturing User",
+        "Quality Manager",
+        "Projects Manager",
+        "Projects User",
+        "HR Manager",
+        "HR User",
+        "Support Team",
+        "Maintenance Manager",
+        "Website Manager"
+      ]
+    }
+  ]
+}
