@@ -21,8 +21,9 @@ def on_update(doc, method=None):
     before = doc.get_doc_before_save()
     if not before:
         return
-    if (before.get("volqen_subdomain") or "") != (doc.get("volqen_subdomain") or ""):
-        utils.validate_subdomain(doc.get("volqen_subdomain")) if doc.get("volqen_subdomain") else None
+    changed = (before.get("volqen_subdomain") or "") != (doc.get("volqen_subdomain") or "")
+    if changed and doc.get("volqen_subdomain"):
+        _fill_defaults(doc)
     if not before.get("volqen_portal_user"):
         create_portal_user(doc)
     if settings.as_bool("volqen_auto_provision") and _ready_to_provision(doc) and doc.get("volqen_subdomain"):

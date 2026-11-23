@@ -236,6 +236,7 @@ sys.modules["frappe.custom.doctype.custom_field.custom_field"] = _cf
 
 _pw = types.ModuleType("frappe.utils.password")
 _pw.update_password = lambda user, pwd: FR.__dict__.setdefault("passwords", []).append((user, pwd))
+_pw.set_encrypted_password = lambda dt, dn, pwd, field: FR.__dict__.setdefault("encrypted", []).append((dt, dn, field, pwd))
 sys.modules["frappe.utils.password"] = _pw
 sys.modules["frappe.utils"] = FR.utils
 

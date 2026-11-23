@@ -130,8 +130,10 @@ def main():
         check("Welcome email sent to the customer admin", mail.get("recipients") == ["ali@orbitfoods.test"])
         check("Welcome email carries site, username and password",
               "orbitfoods.localhost" in body and "ali@orbitfoods.test" in body and "Temporary password" in body)
-        check("Welcome email does not leak the Administrator password",
-              status.get("volqen_site_admin_password") not in body)
+        enc = FR.__dict__.get("encrypted", [])
+        check("Provision: site Administrator password saved in Frappe's encrypted store",
+              enc and enc[-1][0] == "Customer" and enc[-1][2] == "volqen_site_admin_password" and len(enc[-1][3]) >= 18)
+        check("Welcome email does not leak the Administrator password", enc[-1][3] not in body)
 
         # ---- idempotence
         BENCH.clear()

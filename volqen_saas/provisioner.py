@@ -59,6 +59,16 @@ class ProvisioningError(Exception):
     pass
 
 
+def store_admin_password(customer, password):
+    """Password fields live in Frappe's encrypted store, not in the table column."""
+    try:
+        from frappe.utils.password import set_encrypted_password
+
+        set_encrypted_password("Customer", customer, password, "volqen_site_admin_password")
+    except Exception:
+        frappe.log_error(frappe.get_traceback(), f"Volqen: could not store the site password for {customer}")
+
+
 def site_exists(site):
     return os.path.isdir(os.path.join(bench_path(), "sites", site))
 
@@ -190,8 +200,7 @@ def provision(customer, force=False):
         emails.notify_support(doc, f"Provisioning failed for {site}", str(exc))
         return {"ok": False, "status": "Failed", "message": str(exc)}
 
-    doc.reload()
-    doc.db_set("volqen_site_admin_password", admin_password, update_modified=False)
+    store_admin_password(customer, admin_password)
     frappe.db.set_value("Customer", customer, {
         "volqen_site_status": "Active",
         "volqen_database_name": database_name(site),
